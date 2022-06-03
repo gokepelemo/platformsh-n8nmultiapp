@@ -12,7 +12,7 @@ dependencies:
 
 hooks:
   build: |
-    npm install n8n
+    npm install n8n -g
 
 web:
   commands:
@@ -27,9 +27,9 @@ workers:
         n8n worker
 
 mounts:
-  "/.n8n/config":
+  "/.n8n":
     source: local
-    source_path: "n8n_config" 
+    source_path: "n8n" 
 
   "/.cache":
     source: local
