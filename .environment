@@ -1,6 +1,6 @@
 export N8N_PORT=8888
-export N8N_ONBOARDING_FLOW_DISABLED = false
-export N8N_WORKFLOW_TAGS_DISABLED = false
+export N8N_ONBOARDING_FLOW_DISABLED=false
+export N8N_WORKFLOW_TAGS_DISABLED=false
 
 # Worker queue encryption key
 export N8N_ENCRYPTION_KEY=leephie2toovaequ4phaenohnaJohm
