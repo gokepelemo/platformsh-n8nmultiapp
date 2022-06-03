@@ -10,10 +10,6 @@ dependencies:
   nodejs:
     "npm": "*"
 
-hooks:
-  build: |
-    npm install n8n
-
 web:
   commands:
     start: |
