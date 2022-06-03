@@ -12,7 +12,7 @@ dependencies:
 
 hooks:
   build: |
-    npm install n8n -g
+    npm install n8n
 
 web:
   commands:
