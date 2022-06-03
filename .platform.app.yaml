@@ -34,3 +34,7 @@ mounts:
   "/.cache":
     source: local
     source_path: "cache"
+
+variables:
+  env:
+    "NODE_OPTIONS": "--max-old-space-size=8192"
