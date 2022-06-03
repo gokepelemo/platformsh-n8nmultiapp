@@ -29,7 +29,7 @@ workers:
 mounts:
   "/.n8n/config":
     source: local
-    source_path: ".n8n/config" 
+    source_path: "n8n_config" 
 
   "/.cache":
     source: local
