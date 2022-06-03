@@ -1,0 +1,6 @@
+db:
+  type: postgresql:13
+  disk: 1024
+
+queue:
+  type: redis:7.0

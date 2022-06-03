@@ -1,0 +1,27 @@
+name: app
+type: nodejs:16
+disk: 1024
+
+relationships:
+  database: "db:postgresql"
+  queue: "queue:redis"
+
+dependencies:
+  nodejs:
+    "npm": "*"
+
+hooks:
+  build: |
+    npm install n8n
+
+web:
+  commands:
+    start: |
+      n8n start
+
+workers:
+  queue:
+    size: S
+    commands:
+      start: |
+        n8n worker
