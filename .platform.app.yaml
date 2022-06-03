@@ -25,3 +25,12 @@ workers:
     commands:
       start: |
         n8n worker
+
+mounts:
+  "/.n8n/config":
+    source: local
+    source_path: ".n8n/config" 
+
+  "/.cache":
+    source: local
+    source_path: "cache"
