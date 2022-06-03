@@ -3,4 +3,5 @@ db:
   disk: 1024
 
 queue:
-  type: redis:7.0
+  type: redis-persistent:7.0
+  disk: 512
