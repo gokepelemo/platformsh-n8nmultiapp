@@ -1,6 +1,12 @@
 "https://{default}":
   type: upstream
-  upstream: "app:http"
+  upstream: "main:http"
+  id: "main"
+
+"https://hook.{default}":
+  type: upstream
+  upstream: "webhook:http"
+  id: "webhook"
 
 "https://www.{default}":
   type: redirect

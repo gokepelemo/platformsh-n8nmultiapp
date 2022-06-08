@@ -1,0 +1,34 @@
+name: webhook
+type: nodejs:16
+disk: 1024
+
+relationships:
+  database: "db:postgresql"
+  queue: "queue:redis"
+
+dependencies:
+  nodejs:
+    "npm": "*"
+
+hooks:
+  build: |
+    set -e
+    npm install n8n -g
+
+web:
+  commands:
+    start: |
+      n8n webhook
+
+mounts:
+  "/.n8n":
+    source: local
+    source_path: "n8n" 
+
+  "/.cache":
+    source: local
+    source_path: "cache"
+
+variables:
+  env:
+    "NODE_OPTIONS": "--max-old-space-size=2048"
