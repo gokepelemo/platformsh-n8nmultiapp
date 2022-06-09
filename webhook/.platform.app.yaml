@@ -22,13 +22,10 @@ hooks:
     cp $PLATFORM_CACHE_DIR/n8n-key.txt $PLATFORM_APP_DIR/n8n-key.txt
     npm install n8n -g
 
-  deploy: |
-    set -e
-    export N8N_ENCRYPTION_KEY=$(cat $PLATFORM_APP_DIR/n8n-key.txt)
-
 web:
   commands:
     start: |
+      export N8N_ENCRYPTION_KEY=$(cat $PLATFORM_APP_DIR/n8n-key.txt)
       n8n webhook
 
 mounts:
