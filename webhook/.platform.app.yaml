@@ -13,6 +13,12 @@ dependencies:
 hooks:
   build: |
     set -e
+    if [ -e $PLATFORM_CACHE_DIR/n8n-key.txt ]; then
+      export N8N_ENCRYPTION_KEY=$(cat $PLATFORM_CACHE_DIR/n8n-key.txt) 
+    else
+      echo $(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 30) > $PLATFORM_CACHE_DIR/n8n-key.txt
+      export N8N_ENCRYPTION_KEY=$(cat $PLATFORM_CACHE_DIR/n8n-key.txt)
+    fi;
     npm install n8n -g
 
 web:
