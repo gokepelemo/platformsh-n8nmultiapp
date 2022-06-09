@@ -19,7 +19,12 @@ hooks:
       echo $(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 30) > $PLATFORM_CACHE_DIR/n8n-key.txt
       export N8N_ENCRYPTION_KEY=$(cat $PLATFORM_CACHE_DIR/n8n-key.txt)
     fi;
+    cp $PLATFORM_CACHE_DIR/n8n-key.txt $PLATFORM_APP_DIR/n8n-key.txt
     npm install n8n -g
+
+  deploy: |
+    set -e
+    export N8N_ENCRYPTION_KEY=$(cat $PLATFORM_APP_DIR/n8n-key.txt)
 
 web:
   commands:
