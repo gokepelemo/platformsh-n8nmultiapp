@@ -36,8 +36,8 @@ export EXECUTIONS_DATA_MAX_AGE=30
 
 # Mail configuration
 export N8N_EMAIL_MODE=smtp
-#export N8N_SMTP_HOST=
-#export N8N_SMTP_PORT=
+export N8N_SMTP_HOST=$PLATFORM_SMTP_HOST
+export N8N_SMTP_PORT=25
 #export N8N_SMTP_USER=
 #export N8N_SMTP_PASS=
 #export N8N_SMTP_SENDER=
