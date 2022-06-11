@@ -1,6 +1,6 @@
 name: main
 type: nodejs:16
-disk: 1024
+disk: 768
 
 relationships:
   database: "db:postgresql"
