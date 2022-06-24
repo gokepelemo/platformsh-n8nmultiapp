@@ -2,7 +2,9 @@
 
 This repository contains a working configuration of n8n that can be deployed on Platform.sh and used for workflow automations. It is another n8n configuration with an additional application instance to process your webhooks using our multi-app feature and a different sub-domain - `hook.{domain}`. In order to have them working together, they need to share the same encryption key.
 
-You can create one with the [Platform.sh CLI](https://docs.platform.sh/gettingstarted/introduction/own-code/cli-install.html) by running:
+You can create one with the [Platform.sh 
+CLI](https://docs.platform.sh/gettingstarted/introduction/own-code/cli-install.html) 
+and this command before your first deploy:
 
 `platform variable:create -y --level project --sensitive true --name env:N8N_ENCRYPTION_KEY --value $(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 30) --visible-build true --visible-runtime true`
 
