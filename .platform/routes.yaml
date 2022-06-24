@@ -8,6 +8,12 @@
   upstream: "webhook:http"
   id: "webhook"
 
+"https://{default}/files"
+  type: upstream
+  upstream: "main:http"
+  cache:
+    enabled: true
+
 "https://www.{default}":
   type: redirect
   to: "https://{default}"
