@@ -2,7 +2,7 @@
 export N8N_PORT=8888
 export N8N_ONBOARDING_FLOW_DISABLED=false
 export N8N_WORKFLOW_TAGS_DISABLED=false
-export WEBHOOK_URL=$(echo $PLATFORM_ROUTES | base64 --decode | jq -r '.[] | select(.id == "webhook") | .production_url')
+export WEBHOOK_URL=$(echo $PLATFORM_ROUTES|base64 -d|jq -r '.[] | select(.id == "webhook") | .production_url')
 export N8N_METRICS=false
 export DATA_FOLDER=$PLATFORM_APP_DIR/.n8n/
 export N8N_DISABLE_PRODUCTION_MAIN_PROCESS=true

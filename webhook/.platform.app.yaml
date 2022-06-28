@@ -11,14 +11,21 @@ dependencies:
     "npm": "*"
 
 hooks:
-  build: |
-    set -e
-    npm install n8n -g
+  build: !include
+    type: string
+    path: ops/hooks/build.sh
+  deploy: !include
+    type: string
+    path: ops/hooks/deploy.sh
+  post_deploy: !include
+    type: string
+    path: ops/hooks/post_deploy.sh
 
 web:
   commands:
-    start: |
-      n8n webhook
+    start: !include
+      type: string
+      path: ops/start.sh
 
 mounts:
   "/.n8n":
@@ -36,5 +43,7 @@ variables:
 source:
   operations:
     auto-update:
-      command: |
-        curl -fsS https://raw.githubusercontent.com/platformsh/source-operations/main/setup.sh | { bash /dev/fd/3 sop-autoupdate; } 3<&0
+      command: !include
+        type: string
+        path: ops/source/auto-update.sh
+

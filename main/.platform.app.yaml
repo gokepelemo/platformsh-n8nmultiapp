@@ -11,17 +11,15 @@ dependencies:
     "npm": "*"
 
 hooks:
-  build: |
-    set -e
-    npm install n8n -g
-
-  deploy: |
-    set -e
-      if [ ! -f files/index.html ]; then
-          # Create an index.html file in the files directory
-          touch files/index.html
-          echo "n8n - The workflow automation platform that doesn't box you in, that you never outgrow" >> files/index.html
-      fi;
+  build: !include
+    type: string
+    path: ops/hooks/build.sh
+  deploy: !include
+    type: string
+    path: ops/hooks/deploy.sh
+  post_deploy: !include
+    type: string
+    path: ops/hooks/post_deploy.sh
 
 web:
 
@@ -39,20 +37,23 @@ web:
   
   # An n8n process for all other requests
   commands:
-    start: |
-      n8n start
+    start: !include
+      type: string
+      path: ops/start.sh
 
 workers:
   queue1:
     size: S
     commands:
-      start: |
-        n8n worker
+      start: !include
+        type: string
+        path: ops/workers/queue.sh
   queue2:
     size: S
     commands:
-      start: |
-        n8n worker
+      start: !include
+        type: string
+        path: ops/workers/queue.sh
 
 mounts:
 
@@ -78,5 +79,7 @@ variables:
 source:
   operations:
     auto-update:
-      command: |
-        curl -fsS https://raw.githubusercontent.com/platformsh/source-operations/main/setup.sh | { bash /dev/fd/3 sop-autoupdate; } 3<&0
+      command: !include
+        type: string
+        path: ops/source/auto-update.sh
+
